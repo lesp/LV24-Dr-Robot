@@ -35,30 +35,29 @@ def life_counter(lives):
         GPIO.output(22,0)
 
 try:
-    for i in range(3):
+    for i in range(2):
         GPIO.output(buzzer, 1)
         time.sleep(0.5)
         GPIO.output(buzzer,0)
         time.sleep(0.5)
+    lives = 3
+    life_counter(lives)
     while True:
-        lives = 3
-        life_counter(lives)
         while lives > 0:
-            if tool == 0:
-                for i in range(3):
-                    GPIO.output(buzzer, 1)
-                    time.sleep(1)
-                    GPIO.output(buzzer, 0)
-                    time.sleep(1)
-                print("You lost a life")
-                lives = lives - 1
-                life_counter(lives)
-            elif lives == 0:
+            GPIO.wait_for_edge(9, GPIO.FALLING)
+            for i in range(3):
+                GPIO.output(buzzer, 1)
+                time.sleep(1)
+                GPIO.output(buzzer, 0)
+            time.sleep(1)
+            print("You lost a life")
+            lives = lives - 1
+            life_counter(lives)
+            if lives == 0:
                 break
             break
 except KeyboardInterrupt:
     print("Exit")
-    break
         
         
             
