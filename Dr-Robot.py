@@ -15,7 +15,6 @@ GPIO.setup(life2, GPIO.OUT)
 GPIO.setup(life3, GPIO.OUT)
 GPIO.setup(buzzer, GPIO.OUT)
 GPIO.setup(tool, GPIO.IN, GPIO.PUD_UP)
-GPIO.setup(button, GPIO.IN, GPIO.PUD_UP)
 
 def life_counter(lives):
     if lives == 3:
